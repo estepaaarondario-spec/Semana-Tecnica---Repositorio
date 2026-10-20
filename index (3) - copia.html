@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Semana Técnica</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fff1f5; --card:#ffffff; --pink:#f9c6d4; --pink-deep:#e58ba8; --pink-soft:#ffe0e9;
+  --ink:#5a2d3c; --muted:#9a6b7c; --line:#f3cdd9; --shadow:rgba(229,139,168,.25);
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:12px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Nunito',system-ui,sans-serif;line-height:1.5;
+  background-image:radial-gradient(var(--pink) 1.2px,transparent 1.2px);background-size:26px 26px}
+.wrap{max-width:980px;margin:0 auto;padding:40px 20px 80px}
+header{text-align:center;margin-bottom:28px}
+h1{font-family:'Fredoka',sans-serif;font-weight:600;font-size:clamp(2.4rem,8vw,4.2rem);margin:0;letter-spacing:-.01em;color:var(--pink-deep);
+  text-shadow:3px 3px 0 var(--pink-soft)}
+header p{margin:8px 0 0;color:var(--muted);font-size:1.05rem}
+.panel{background:var(--card);border:2px solid var(--line);border-radius:22px;padding:18px;box-shadow:0 8px 24px var(--shadow);margin-bottom:22px}
+.panel h2{font-family:'Fredoka',sans-serif;font-weight:500;font-size:1.25rem;margin:0 0 12px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-grid .full-width{grid-column:1/-1}
+.form-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:12px}
+input,textarea,select{font:inherit;color:var(--ink);background:#fff8fa;border:2px solid var(--line);border-radius:14px;padding:10px 12px;width:100%;min-width:0}
+textarea{resize:vertical;min-height:70px}
+input:focus,textarea:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid var(--pink-deep);outline-offset:2px}
+button{font:inherit;font-weight:700;cursor:pointer;border:0;border-radius:14px;padding:10px 16px;background:var(--pink-deep);color:#fff;transition:transform .12s,background .12s}
+button:hover{background:#d9759a;transform:translateY(-1px)}
+button.soft{background:var(--pink-soft);color:var(--ink)}
+button.soft:hover{background:var(--pink)}
+.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:22px}
+.tools input{flex:1;min-width:180px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.chip{background:#fff;border:2px solid var(--line);color:var(--ink);padding:6px 14px;border-radius:999px;font-weight:600;font-size:.92rem;cursor:pointer}
+.chip.on{background:var(--pink-deep);border-color:var(--pink-deep);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
+.link{background:var(--card);border:2px solid var(--line);border-radius:20px;padding:16px;box-shadow:0 6px 16px var(--shadow);display:flex;flex-direction:column;gap:8px;overflow:hidden}
+.link-img{width:100%;height:140px;object-fit:cover;border-radius:12px;margin-bottom:4px;border:1px solid var(--line)}
+.link .tag{align-self:flex-start;background:var(--pink-soft);border-radius:999px;padding:2px 12px;font-size:.8rem;font-weight:700;color:var(--pink-deep)}
+.link h3{font-family:'Fredoka',sans-serif;font-weight:500;font-size:1.15rem;margin:0;word-break:break-word}
+.link p.desc{font-size:.9rem;color:var(--muted);margin:0;word-break:break-word;line-height:1.4}
+.link a{color:var(--pink-deep);font-weight:600;word-break:break-all;font-size:.9rem;text-decoration:none}
+.link a:hover{text-decoration:underline}
+.link .acts{display:flex;gap:8px;margin-top:auto;padding-top:6px}
+.link .acts button{padding:6px 12px;font-size:.85rem}
+.empty{text-align:center;color:var(--muted);padding:40px 10px;border:2px dashed var(--pink);border-radius:20px;grid-column:1/-1}
+footer{text-align:center;color:var(--muted);font-size:.85rem;margin-top:30px}
+@media(max-width:720px){.form-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Semana Técnica 🌸</h1>
+    <p>Recursos, links y materiales en un solo lugar</p>
+  </header>
+
+  <section class="panel" aria-labelledby="t-add">
+    <h2 id="t-add"><span id="formTitle">Agregar un link</span></h2>
+    <div class="form-grid">
+      <input id="title" placeholder="Título (ej: Guía de soldadura)" maxlength="80">
+      <input id="url" placeholder="https://..." inputmode="url">
+      <input id="cat" list="cats" placeholder="Categoría" maxlength="30">
+      <input id="img" placeholder="URL de la imagen (ej: https://.../imagen.jpg)" inputmode="url">
+      <textarea id="desc" class="full-width" placeholder="Descripción breve..." maxlength="250"></textarea>
+    </div>
+    <div class="form-actions">
+      <button class="soft" id="cancelBtn" style="display:none;">Cancelar</button>
+      <button id="save">Guardar</button>
+    </div>
+    <datalist id="cats"></datalist>
+  </section>
+
+  <div class="tools">
+    <input id="q" type="search" placeholder="Buscar por título, categoría o descripción...">
+    <button class="soft" id="export">Exportar</button>
+    <button class="soft" id="import">Importar</button>
+    <input id="file" type="file" accept="application/json" hidden>
+  </div>
+
+  <div class="chips" id="chips"></div>
+  <main class="grid" id="list"></main>
+
+  <footer>Los links se guardan en este navegador. Usá Exportar para hacer copia o compartirlos.</footer>
+</div>
+
+<script>
+const KEY = 'semana-tecnica-links';
+const SEED = [
+  {
+    id: 1,
+    title: 'Cronograma de la Semana Técnica',
+    url: 'https://example.com/cronograma',
+    cat: 'General',
+    img: 'https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=500&q=80',
+    desc: 'Consultá todos los horarios y actividades programadas para esta semana.'
+  },
+  {
+    id: 2,
+    title: 'Material de talleres',
+    url: 'https://example.com/talleres',
+    cat: 'Talleres',
+    img: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=500&q=80',
+    desc: 'Documentación, presentaciones y guías prácticas descargables.'
+  }
+];
+
+let links = load(), filter = 'Todas', editId = null;
+const $ = id => document.getElementById(id);
+
+function load(){
+  try { const d = JSON.parse(localStorage.getItem(KEY)); if (Array.isArray(d)) return d; } catch(e){}
+  return SEED.slice();
+}
+
+function persist(){ try { localStorage.setItem(KEY, JSON.stringify(links)); } catch(e){} }
+function esc(s){ return String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function fixUrl(u){ u = u.trim(); return /^https?:\/\//i.test(u) ? u : 'https://' + u; }
+
+function render(){
+  const cats = [...new Set(links.map(l => l.cat).filter(Boolean))].sort();
+  if (filter !== 'Todas' && !cats.includes(filter)) filter = 'Todas';
+  $('cats').innerHTML = cats.map(c => `<option value="${esc(c)}">`).join('');
+  $('chips').innerHTML = ['Todas', ...cats].map(c =>
+    `<button class="chip ${c === filter ? 'on' : ''}" data-cat="${esc(c)}">${esc(c)}</button>`).join('');
+  
+  const q = $('q').value.toLowerCase();
+  const shown = links.filter(l => (filter === 'Todas' || l.cat === filter) &&
+    (l.title + l.url + (l.cat || '') + (l.desc || '')).toLowerCase().includes(q));
+
+  $('list').innerHTML = shown.length ? shown.map(l => `
+    <article class="link">
+      ${l.img ? `<img src="${esc(l.img)}" alt="${esc(l.title)}" class="link-img" onerror="this.style.display='none'">` : ''}
+      ${l.cat ? `<span class="tag">${esc(l.cat)}</span>` : ''}
+      <h3>${esc(l.title)}</h3>
+      ${l.desc ? `<p class="desc">${esc(l.desc)}</p>` : ''}
+      <a href="${esc(l.url)}" target="_blank" rel="noopener noreferrer">${esc(l.url)}</a>
+      <div class="acts">
+        <button class="soft" data-edit="${l.id}">Editar</button>
+        <button class="soft" data-del="${l.id}">Borrar</button>
+      </div>
+    </article>`).join('')
+    : `<div class="empty">Todavía no hay links acá. Agregá el primero arriba.</div>`;
+}
+
+function resetForm(){
+  editId = null; 
+  ['title','url','cat','img','desc'].forEach(i => $(i).value = '');$('formTitle').textContent = 'Agregar un link'; 
+  $('save').textContent = 'Guardar';$('cancelBtn').style.display = 'none';
+}
+
+$('save').onclick = () => {
+  const title = $('title').value.trim(), url =$('url').value.trim();
+  if (!title || !url) { alert('Completá al menos el título y el link.'); return; }
+  
+  const item = {
+    title,
+    url: fixUrl(url),
+    cat: $('cat').value.trim() || 'General',
+    img: $('img').value.trim(),
+    desc: $('desc').value.trim()
+  };
+
+  if (editId) links = links.map(l => l.id === editId ? {...l, ...item} : l);
+  else links.unshift({id: Date.now(), ...item});
+
+  persist(); resetForm(); render();
+};
+
+$('cancelBtn').onclick = resetForm;
+
+document.addEventListener('click', e => {
+  const t = e.target;
+  if (t.dataset.cat) { filter = t.dataset.cat; render(); }
+  if (t.dataset.del && confirm('¿Borrar este link?')) { 
+    links = links.filter(l => l.id != t.dataset.del); 
+    if (editId == t.dataset.del) resetForm();
+    persist(); render(); 
+  }
+  if (t.dataset.edit) {
+    const l = links.find(x => x.id == t.dataset.edit); if (!l) return;
+    editId = l.id; 
+    $('title').value = l.title; 
+    $('url').value = l.url; 
+    $('cat').value = l.cat || '';
+    $('img').value = l.img \vert{}\vert{} '';$('desc').value = l.desc || '';
+    $('formTitle').textContent = 'Editar link';$('save').textContent = 'Guardar cambios';
+    $('cancelBtn').style.display = 'inline-block';$('title').focus(); 
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+});
+
+$('q').oninput = render;
+
+$('export').onclick = () => {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(links, null, 2)], {type:'application/json'}));
+  a.download = 'semana-tecnica-links.json'; a.click(); URL.revokeObjectURL(a.href);
+};
+
+$('import').onclick = () => $('file').click();$('file').onchange = e => {
+  const f = e.target.files[0]; if (!f) return;
+  const r = new FileReader();
+  r.onload = () => {
+    try {
+      const d = JSON.parse(r.result);
+      if (!Array.isArray(d)) throw 0;
+      links = d.filter(x => x && x.title && x.url).map((x, i) => ({
+        id: Date.now() + i,
+        title: String(x.title),
+        url: String(x.url),
+        cat: String(x.cat || 'General'),
+        img: String(x.img || ''),
+        desc: String(x.desc || '')
+      }));
+      persist(); render();
+    } catch(err) { alert('El archivo no es válido. Usá uno creado con Exportar.'); }
+  };
+  r.readAsText(f); e.target.value = '';
+};
+
+render();
+</script>
+</body>
+</html>
